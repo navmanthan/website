@@ -1,0 +1,234 @@
+@import 'tailwindcss';
+
+/* Design tokens. Tone-aware colors (fg, line, surface...) resolve through the .tone-* classes below,
+   so components placed inside a dark or light section adapt without extra props. */
+@theme {
+  --font-sans: 'Inter Variable', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-display: 'Plus Jakarta Sans Variable', 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
+
+  --color-ink-950: #070b16;
+  --color-ink-900: #0a0f1e;
+  --color-ink-850: #0e1426;
+  --color-ink-800: #141b31;
+  --color-ink-700: #222b45;
+
+  --color-violet-brand: #6d4aff;
+  --color-blue-brand: #2563eb;
+  --color-cyan-brand: #22d3ee;
+
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+
+  --animate-drift: drift 18s ease-in-out infinite alternate;
+  --animate-flow: flow 3.2s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+  --animate-spin-slow: spin 0.9s linear infinite;
+
+  @keyframes drift {
+    from {
+      transform: translate3d(-3%, -2%, 0) scale(1);
+    }
+    to {
+      transform: translate3d(4%, 3%, 0) scale(1.08);
+    }
+  }
+
+  @keyframes flow {
+    0% {
+      top: 0;
+      opacity: 0;
+    }
+    12% {
+      opacity: 1;
+    }
+    88% {
+      opacity: 1;
+    }
+    100% {
+      top: 100%;
+      opacity: 0;
+    }
+  }
+}
+
+@theme inline {
+  --color-canvas: var(--canvas);
+  --color-fg: var(--fg);
+  --color-fg-muted: var(--fg-muted);
+  --color-fg-subtle: var(--fg-subtle);
+  --color-line: var(--line);
+  --color-surface: var(--surface);
+  --color-surface-raised: var(--surface-raised);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+}
+
+@layer base {
+  :root,
+  .tone-light {
+    --canvas: #ffffff;
+    --fg: #0e1526;
+    --fg-muted: #4a5468;
+    --fg-subtle: #667085;
+    --line: #e3e7ee;
+    --surface: #ffffff;
+    --surface-raised: #f4f6fa;
+    --accent: #5b3fe0;
+    --accent-soft: rgb(91 63 224 / 0.08);
+    color: var(--fg);
+  }
+
+  .tone-mist {
+    --canvas: #f4f6fa;
+    --fg: #0e1526;
+    --fg-muted: #4a5468;
+    --fg-subtle: #667085;
+    --line: #dfe4ec;
+    --surface: #ffffff;
+    --surface-raised: #eef1f7;
+    --accent: #5b3fe0;
+    --accent-soft: rgb(91 63 224 / 0.08);
+    color: var(--fg);
+  }
+
+  .tone-dark {
+    --canvas: #0a0f1e;
+    --fg: #f4f7fc;
+    --fg-muted: #aeb9cc;
+    --fg-subtle: #8996ad;
+    --line: rgb(255 255 255 / 0.1);
+    --surface: rgb(255 255 255 / 0.035);
+    --surface-raised: rgb(255 255 255 / 0.07);
+    --accent: #67e8f9;
+    --accent-soft: rgb(103 232 249 / 0.1);
+    color: var(--fg);
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  html,
+  body {
+    overflow-x: clip;
+  }
+
+  body {
+    background: var(--color-ink-900);
+    font-family: var(--font-sans);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+
+  [id] {
+    scroll-margin-top: 6.5rem;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  button,
+  select {
+    cursor: pointer;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+}
+
+@layer components {
+  .hero-backdrop {
+    background:
+      radial-gradient(58% 55% at 80% 8%, rgb(109 74 255 / 0.2), transparent 70%),
+      radial-gradient(40% 40% at 8% 0%, rgb(34 211 238 / 0.09), transparent 72%),
+      var(--color-ink-900);
+  }
+
+  .grid-lines::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+      linear-gradient(rgb(255 255 255 / 0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgb(255 255 255 / 0.035) 1px, transparent 1px);
+    background-size: 72px 72px;
+    mask-image: radial-gradient(70% 70% at 50% 0%, #000 20%, transparent 100%);
+  }
+
+  .text-gradient {
+    background: linear-gradient(100deg, #a78bfa 0%, #60a5fa 48%, #67e8f9 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .btn-gradient {
+    background-image: linear-gradient(100deg, var(--color-violet-brand), var(--color-blue-brand));
+  }
+
+  .icon-tile {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.75rem;
+    background: var(--accent-soft);
+    color: var(--accent);
+    transition:
+      background-color 0.25s,
+      color 0.25s;
+  }
+
+  .field-control {
+    width: 100%;
+    border-radius: 0.625rem;
+    border: 1px solid #cbd2dd;
+    background: #fff;
+    padding: 0.7rem 0.875rem;
+    font-size: 0.9375rem;
+    color: var(--fg);
+    transition:
+      border-color 0.15s,
+      box-shadow 0.15s;
+  }
+
+  .field-control::placeholder {
+    color: var(--fg-subtle);
+  }
+
+  .field-control:hover {
+    border-color: #98a2b3;
+  }
+
+  .field-control:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-soft);
+  }
+
+  .field-control[aria-invalid='true'] {
+    border-color: #c4320a;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

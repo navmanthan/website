@@ -1,0 +1,140 @@
+import { Briefcase, Building2, GraduationCap, HeartPulse, ShoppingBag, Truck, UtensilsCrossed } from 'lucide-react';
+import type { Industry } from '@/types';
+
+// To add an industry, append an entry here. The Industries page, its section navigation,
+// the home page preview and the enquiry form all read from this list.
+export const industries: Industry[] = [
+  {
+    slug: 'healthcare',
+    name: 'Healthcare',
+    icon: HeartPulse,
+    summary: 'Clinics, hospitals, diagnostic centers and health startups.',
+    challenges: [
+      'Front-desk workload and appointment no-shows',
+      'Patient records spread across systems',
+      'Clinical time lost to documentation',
+      'Careful handling of sensitive data',
+    ],
+    applications: {
+      ai: 'Assisted clinical notes for clinician review, and voice or WhatsApp assistants for booking and patient queries.',
+      erp: 'Billing, pharmacy, inventory and procurement tied to patient activity across locations.',
+      automation: 'Reminders, report delivery, insurance paperwork routing and post-visit follow-ups.',
+      software: 'Patient portals, tele-consultation workflows and practice management applications.',
+    },
+    relatedServices: ['healthcare-technology', 'artificial-intelligence'],
+  },
+  {
+    slug: 'education',
+    name: 'Education',
+    icon: GraduationCap,
+    summary: 'Schools, colleges, training institutes and edtech companies.',
+    challenges: [
+      'Administrative work taking up teaching time',
+      'Limited visibility into individual progress',
+      'Admissions enquiries lost across channels',
+      'Fee follow-ups handled manually',
+    ],
+    applications: {
+      ai: 'Study assistants grounded in approved syllabus material, and question generation for teachers.',
+      erp: 'Admissions, fees, staff and academic records managed in one institution-wide system.',
+      automation: 'Attendance alerts, fee reminders, result distribution and admissions follow-ups.',
+      software: 'Learning platforms, assessment tools and portals for students and parents.',
+    },
+    relatedServices: ['education-technology', 'artificial-intelligence'],
+  },
+  {
+    slug: 'retail',
+    name: 'Retail',
+    icon: ShoppingBag,
+    summary: 'Multi-store retailers, distributors and online sellers.',
+    challenges: [
+      'Stock mismatches between stores and online channels',
+      'Customer queries arriving on many channels',
+      'Pricing and promotions that are hard to coordinate',
+      'Sales data that arrives too late to act on',
+    ],
+    applications: {
+      ai: 'Product and order assistants for customers, with demand signals for buying teams.',
+      erp: 'Unified inventory, purchasing, billing and store accounting.',
+      automation: 'Reorder triggers, order updates over WhatsApp and return workflows.',
+      software: 'Storefronts, loyalty programs and dashboards for store and regional managers.',
+    },
+    relatedServices: ['erp-enterprise-solutions', 'custom-software'],
+  },
+  {
+    slug: 'restaurants-hospitality',
+    name: 'Restaurants and Hospitality',
+    icon: UtensilsCrossed,
+    summary: 'Restaurant groups, cloud kitchens, hotels and hospitality operators.',
+    challenges: [
+      'Reservations and orders coming from many sources',
+      'Food cost and wastage that are difficult to track',
+      'Consistency across outlets',
+      'Guest communication during peak hours',
+    ],
+    applications: {
+      ai: 'Voice and chat assistants for reservations, menu questions and guest requests.',
+      erp: 'Recipe costing, central purchasing, inventory and outlet-level accounting.',
+      automation: 'Booking confirmations, feedback requests and low-stock alerts to kitchens.',
+      software: 'Ordering experiences, kitchen displays and multi-outlet management dashboards.',
+    },
+    relatedServices: ['artificial-intelligence', 'erp-enterprise-solutions'],
+  },
+  {
+    slug: 'supply-chain-logistics',
+    name: 'Supply Chain and Logistics',
+    icon: Truck,
+    summary: 'Manufacturers, distributors, warehouses and transport operators.',
+    challenges: [
+      'Limited shipment and stock visibility',
+      'Manual handling of invoices and challans',
+      'Delays discovered after they affect customers',
+      'Coordination across vendors and transporters',
+    ],
+    applications: {
+      ai: 'Document extraction, operations assistants and agents that triage exceptions.',
+      erp: 'Inventory, purchasing, dispatch documentation and vendor accounting.',
+      automation: 'Delivery notifications, approval chains and exception escalation.',
+      software: 'Warehouse apps, tracking views and vendor or transporter portals.',
+    },
+    relatedServices: ['supply-chain', 'erp-enterprise-solutions'],
+  },
+  {
+    slug: 'professional-services',
+    name: 'Professional Services',
+    icon: Briefcase,
+    summary: 'Consulting, legal, accounting and advisory firms.',
+    challenges: [
+      'Institutional knowledge locked in past documents',
+      'Time and billing captured inconsistently',
+      'Repetitive drafting and review',
+      'Client updates handled one by one',
+    ],
+    applications: {
+      ai: 'Private knowledge search across engagements, and assisted drafting for professional review.',
+      erp: 'Projects, timesheets, billing and resource planning in one place.',
+      automation: 'Client onboarding, document collection and deadline reminders.',
+      software: 'Client portals, secure document exchange and engagement dashboards.',
+    },
+    relatedServices: ['artificial-intelligence', 'custom-software'],
+  },
+  {
+    slug: 'other-industries',
+    name: 'Other Business Industries',
+    icon: Building2,
+    summary: 'Any business with a process worth improving.',
+    challenges: [
+      'Manual work that grows with the business',
+      'Systems that do not talk to each other',
+      'Data that is collected but rarely used',
+      'Uncertainty about where AI would really help',
+    ],
+    applications: {
+      ai: 'A focused assessment of where AI is useful, followed by a measurable first use case.',
+      erp: 'Core business records brought together, sized to your stage of growth.',
+      automation: 'Repetitive handoffs between people and systems identified and removed.',
+      software: 'Applications and integrations designed for your particular way of working.',
+    },
+    relatedServices: ['custom-software', 'artificial-intelligence'],
+  },
+];
